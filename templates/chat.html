@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="/static/css/codehilite.css" />
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
-        const queryInput = document.getElementById('query')
-        queryInput.addEventListener('keydown', (event) => {
+        const queryInput = document.getElementById("query")
+        console.log(queryInput)
+        queryInput.addEventListener('keypress', (event) => {
             if (event.keyCode == 13) {
                 getResp()
                 return
@@ -37,11 +38,9 @@
 </head>
 
 <body id="content">
-    <form method="post">
-        <input type="text" id="query">
-        <input type="button" onclick="getResp()" value="ask">
-        <div id="resp"></div>
-    </form>
+    <input type="text" id="query">
+    <input type="button" onclick="getResp()" value="ask">
+    <div id="resp"></div>
 </body>
 
 </html>
