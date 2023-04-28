@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>chat</title>
+    <link rel="stylesheet" href="/static/css/codehilite.css"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        function getResp() {
+            var query = $("#query").val()
+            $.ajax({
+                method: "post",
+                url: "/chat",
+                data: {"query": query},
+                dataType: "text",
+                encode: true,
+
+            }).done(function (data) {
+		        console.log(data)
+                $("#resp").html(data)
+            })
+        }
+    </script>
+</head>
+<body id="content">
+<form method="post">
+    <input type="text" id="query">
+    <input type="button" onclick="getResp()" value="ask">
+    <div id="resp"></div>
+</form>
+</body>
+</html>
+
