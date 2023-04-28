@@ -1,33 +1,47 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>chat</title>
-    <link rel="stylesheet" href="/static/css/codehilite.css"/>
+    <link rel="stylesheet" href="/static/css/codehilite.css" />
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
+        const queryInput = document.getElementById('query')
+        queryInput.addEventListener('keydown', (event) => {
+            if (event.keyCode == 13) {
+                getResp()
+                return
+            }
+        })
+
         function getResp() {
             var query = $("#query").val()
+            if (query === '') {
+                alert("pls input query content")
+                return
+            }
             $.ajax({
                 method: "post",
                 url: "/chat",
-                data: {"query": query},
+                data: { "query": query },
                 dataType: "text",
                 encode: true,
 
             }).done(function (data) {
-		        console.log(data)
+                console.log(data)
                 $("#resp").html(data)
             })
         }
     </script>
 </head>
-<body id="content">
-<form method="post">
-    <input type="text" id="query">
-    <input type="button" onclick="getResp()" value="ask">
-    <div id="resp"></div>
-</form>
-</body>
-</html>
 
+<body id="content">
+    <form method="post">
+        <input type="text" id="query">
+        <input type="button" onclick="getResp()" value="ask">
+        <div id="resp"></div>
+    </form>
+</body>
+
+</html>
