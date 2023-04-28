@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="/static/css/codehilite.css" />
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
-        const queryInput = document.getElementById("query")
-        console.log(queryInput)
-        queryInput.addEventListener('keypress', (event) => {
-            if (event.keyCode == 13) {
-                getResp()
-                return
+        const textInput = document.getElementById('query');
+        console.log(textInput)
+        textInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                console.log('Enter key pressed');
+                getResp();
             }
-        })
+        });
 
         function getResp() {
             var query = $("#query").val()
